@@ -150,5 +150,14 @@ char	*get_next_line(int fd)
 		}
 		line = ft_realloc_rd(&line, fd, &rd);
 	}
+	if (rd < 0)
+	{
+		if (line)
+		{
+			free(line);
+			line = NULL;
+		}
+		return (NULL);
+	}
 	return (ft_strrdup(&line));
 }
